@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { generateConfirmationMessage } from '../services/geminiService';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -26,8 +25,6 @@ const ContactPage: React.FC = () => {
     setConfirmationMessage(null);
 
     try {
-      const confirmation = await generateConfirmationMessage(formData.name, formData.message);
-      setConfirmationMessage(confirmation);
       setFormData({ name: '', email: '', date: '', message: '' });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred.');
